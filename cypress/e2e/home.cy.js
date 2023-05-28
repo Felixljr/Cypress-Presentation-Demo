@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+
 // add the line above to get intellisense for cypress commands
 
 describe('Home Page', () => {
@@ -44,6 +45,27 @@ describe('Home Page', () => {
     })
   })
 
-  
-
+  it('Should be able to log in successfully', () => {
+    //For demonstration purposes, redirection after signing in takes 10 seconds
+    //We can manipulate time in Cypress with cy.clock(); see https://docs.cypress.io/api/commands/clock
+    
+    cy.clock()
+    cy.visit('/')
+    //Group commond commands together in a custom command; see cypress/support/commands.js
+    cy.login()
+    cy.fixture('demoFixture').then((userData) => {
+      cy.get('[data-cy="password"]').type(userData.password)
+      cy.get('[data-cy="SignInButton"]').click()
+      cy.get('[data-cy="Notification"]').contains('Sign In Successful')
+      //check for a cookie
+      cy.getCookie('cookieForFelix')
+      //chain commands together
+        .should('exist')
+        .should('have.property', 'value', 'thanks')
+      //Use cy.tick() to advance time; see https://docs.cypress.io/api/commands/tick
+      cy.tick(10000)
+      // cy.url().should('include', '/account')
+      cy.location('pathname').should('eq', '/account')
+    })
+  })
 })

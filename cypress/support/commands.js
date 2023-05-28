@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+    cy.get('[data-cy="SignIn/Reg"]').click()
+    cy.get('[data-cy="Register"]').click()
+    //select by element and ensure the count is accurate
+    cy.get('input').should('have.length', 3)
+    cy.get('[data-cy="SignIn"]').click()
+    // use .type to enter text into the input
+    cy.get('[data-cy="email"]').type('felix@felix.com')
+})
