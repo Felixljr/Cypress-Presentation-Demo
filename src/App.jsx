@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './index.css'
 import RegisterOrLogin from './components/RegisterOrLogin'
 import Navbar from './components/Navbar'
+import Notification from './components/Notification'
 
 export default function App() {
   const [modal, setModal] = useState(false)
@@ -26,6 +27,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <Notification />
     </>
   )
 }
