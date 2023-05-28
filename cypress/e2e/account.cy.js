@@ -35,13 +35,16 @@ describe('Account Page', () => {
   //Attributes
 it('Should have one active and one disabled button', () => {
   // Assert that the active button is enabled
-  cy.get('[data-cy="active"]').should('be.enabled')
+
+  // Use a custom command to select by data-cy; see cypress/support/commands.js
+  cy.getById('active').should('be.enabled')
+
   // Assert that the notActive button is disabled using 'attr'
   cy.get('[data-cy="notActive"]').should('have.attr', 'disabled')
 
   // Extension using Chai assertions
   // Use DOM traversal/relationships
-  cy.get('[data-cy="active"]')
+  cy.getById('active')
     .parent()
     .should((el) => {
       // Use Chai to assert that the parent element has the correct class

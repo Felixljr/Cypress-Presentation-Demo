@@ -33,3 +33,7 @@ Cypress.Commands.add('partialLogin', () => {
     // use .type to enter text into the input
     cy.get('[data-cy="email"]').type('felix@felix.com')
 })
+
+Cypress.Commands.add('getById', (selector) => {
+  return cy.get(`[data-cy="${selector}"]`)
+})
