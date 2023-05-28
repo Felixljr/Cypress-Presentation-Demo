@@ -6,10 +6,8 @@ export default function AccountPage() {
 
   const handleSignOut = (e) => {
     e.preventDefault()
-    //delete cookie
     document.cookie = 'cookieForFelix=; max-age=0; path=/'
-    //redirect to home
-    setInterval(() => (window.location.href = '/'), 200)
+    setInterval(() => (window.location.href = '/'), 1000)
   }
 
   return (

@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
-body {
-  background-color: #9a9da0;
+html, body{
+background-image: linear-gradient(to bottom,#9a9da0, #ECEFF4 );
+background-attachment: fixed;
+height: 100%;
 }
