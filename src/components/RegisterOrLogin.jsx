@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import {AiOutlineCloseCircle} from 'react-icons/ai'
 
-export default function RegisterOrLogin() {
+export default function RegisterOrLogin({ modal}) {
 
 const [signIn, setSignIn] = useState(false)
 
@@ -17,6 +18,11 @@ const [signIn, setSignIn] = useState(false)
 
             <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
               <div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
+                <div className='relative left-[96%] bottom-8 md:left-[99%] hover:text-red-800'>
+                  <button onClick={modal}>
+                    <AiOutlineCloseCircle size={25} />
+                  </button>
+                </div>
                 <form className='space-y-6' action='#' method='POST'>
                   <div>
                     <label
@@ -103,6 +109,11 @@ const [signIn, setSignIn] = useState(false)
 
             <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
               <div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
+                <div className='relative left-[96%] bottom-8 md:left-[99%] hover:text-red-800'>
+                  <button onClick={modal}>
+                    <AiOutlineCloseCircle size={25} />
+                  </button>
+                </div>
                 <form className='space-y-6' action='#' method='POST'>
                   <div>
                     <label

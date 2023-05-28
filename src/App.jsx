@@ -17,7 +17,7 @@ export default function App() {
       <Navbar modal={handleModal} />
       {modal ? (
         <div>
-          <RegisterOrLogin />
+          <RegisterOrLogin modal={handleModal} />
         </div>
       ) : (
         <div className='bg-white w-fit h-24 rounded-lg mx-auto'>
