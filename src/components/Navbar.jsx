@@ -1,4 +1,4 @@
-export default function Navbar({ modal, signedIn }) {
+export default function Navbar({ modal, signedIn, signOut }) {
   return (
     <>
       {signedIn ? (
@@ -11,7 +11,7 @@ export default function Navbar({ modal, signedIn }) {
             <div className='flex flex-row w-44 justify-end'>
               <button
                 className='bg-black text-white rounded-md p-2 mr-2'
-                onClick={modal}
+                onClick={signOut}
               >
                 Sign Out
               </button>
