@@ -12,11 +12,6 @@ export default function App() {
     console.log('modal')
   }
 
-  const handleSigningINOUT = (e) => {
-    e.preventDefault()
-    console.log('sign in/out')
-  }
-
   return (
     <>
       <Navbar modal={handleModal} />

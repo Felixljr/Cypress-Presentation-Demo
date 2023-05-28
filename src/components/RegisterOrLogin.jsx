@@ -30,7 +30,6 @@ export default function RegisterOrLogin({ modal }) {
      handleShowNotification()
      console.log('error')
    }
-   
  }
 
   return (
