@@ -10,5 +10,5 @@ height: 100%;
 }
 
 .title {
-  @apply text-2xl font-bold text-center text-gray-800 sm:text-3xl;
+  @apply text-2xl font-bold text-center text-gray-800 mb-4 sm:text-3xl;
 }
