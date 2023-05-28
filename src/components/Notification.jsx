@@ -1,20 +1,30 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Transition } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import { XMarkIcon } from '@heroicons/react/20/solid'
 
-export default function Notification() {
-  const [show, setShow] = useState(true)
+export default function Notification({ message, showNotification }) {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    setShow(showNotification)
+  }, [showNotification])
+
+  useEffect(() => {
+    if (show) {
+      setTimeout(() => {
+        setShow(false)
+      }, 1000)
+    }
+  }, [show, showNotification])
 
   return (
     <>
-      {/* Global notification live region, render this permanently at the end of the document */}
       <div
         aria-live='assertive'
         className='pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 md:top-[75%]'
       >
         <div className='flex w-full flex-col items-center space-y-4 sm:items-end'>
-          {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
           <Transition
             show={show}
             as={Fragment}
@@ -29,17 +39,26 @@ export default function Notification() {
               <div className='p-4'>
                 <div className='flex items-start'>
                   <div className='flex-shrink-0'>
-                    <CheckCircleIcon
-                      className='h-6 w-6 text-green-400'
-                      aria-hidden='true'
-                    />
+                    {message === 'valid' ? (
+                      <CheckCircleIcon
+                        className='h-6 w-6 text-green-400'
+                        aria-hidden='true'
+                      />
+                    ) : (
+                      <XMarkIcon
+                        className='h-6 w-6 text-red-400'
+                        aria-hidden='true'
+                      />
+                    )}
                   </div>
                   <div className='ml-3 w-0 flex-1 pt-0.5'>
                     <p className='text-sm font-medium text-gray-900'>
-                      Successfully saved!
+                      {message === 'valid' ? 'Sign In Successful' : 'Invalid Credentials'}
                     </p>
                     <p className='mt-1 text-sm text-gray-500'>
-                      Anyone with a link can now view this file.
+                      {message === 'valid'
+                        ? 'Redirecting to your account page...'
+                        : 'Try again'}
                     </p>
                   </div>
                   <div className='ml-4 flex flex-shrink-0'>

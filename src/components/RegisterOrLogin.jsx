@@ -1,30 +1,37 @@
 import { useState, useRef } from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import Notification from './Notification'
 
 export default function RegisterOrLogin({ modal }) {
   const [signIn, setSignIn] = useState(false)
+  const [validOrInvalid, setValidOrInvalid] = useState('')
   const emailRef = useRef()
   const passwordRef = useRef()
 
-  const handleSignIn = async (e) => {
-    e.preventDefault()
-    const email = emailRef.current.value
-    const password = passwordRef.current.value
-    console.log('Sign In')
-    if (email === 'felix@felix.com' && password === '1234') {
-      document.cookie = 'cookieForFelix=thanks; max-age=60*60*24*30; path=/'
-      // setAlertColor('alert-success')
-      // setAlertMsg('Login Successful')
-      // setShowAlert(true)
-      setInterval(() => (window.location.href = '/account'), 1000)
-      console.log('success')
-    } else {
-      // setAlertColor('alert-danger')
-      // setAlertMsg('Username and/or Password Invalid!')
-      // setShowAlert(true)
-      console.log('error')
-    }
+  const [showNotification, setShowNotification] = useState(false)
+
+  const handleShowNotification = () => {
+    setShowNotification(true)
   }
+
+ const handleSignIn = async (e) => {
+   e.preventDefault()
+   const email = emailRef.current.value
+   const password = passwordRef.current.value
+   console.log('Sign In')
+   if (email === 'felix@felix.com' && password === '1234') {
+     setValidOrInvalid('valid')
+     handleShowNotification()
+     document.cookie = 'cookieForFelix=thanks; max-age=60*60*24*30; path=/'
+     setInterval(() => (window.location.href = '/account'), 1000)
+     console.log('success')
+   } else {
+     setValidOrInvalid('invalid')
+     handleShowNotification()
+     console.log('error')
+   }
+   
+ }
 
   return (
     <>
@@ -186,7 +193,7 @@ export default function RegisterOrLogin({ modal }) {
                 </form>
 
                 <div className='flex flex-row justify-center mt-4'>
-                  <p>Dont't have an account? </p> &nbsp;
+                  <p>Don't have an account? </p> &nbsp;
                   <button type='submit' onClick={() => setSignIn(true)}>
                     Register
                   </button>
@@ -196,6 +203,10 @@ export default function RegisterOrLogin({ modal }) {
           </div>
         </>
       )}
+      <Notification
+        message={validOrInvalid}
+        showNotification={showNotification}
+      />
     </>
   )
 }
