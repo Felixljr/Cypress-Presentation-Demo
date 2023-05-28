@@ -14,7 +14,7 @@ export default function Notification({ message, showNotification }) {
     if (show) {
       setTimeout(() => {
         setShow(false)
-      }, 1000)
+      }, 3000)
     }
   }, [show, showNotification])
 
@@ -23,6 +23,7 @@ export default function Notification({ message, showNotification }) {
       <div
         aria-live='assertive'
         className='pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 md:top-[75%]'
+        data-cy='Notification'
       >
         <div className='flex w-full flex-col items-center space-y-4 sm:items-end'>
           <Transition

@@ -20,10 +20,15 @@ export default function App() {
           <RegisterOrLogin modal={handleModal} />
         </div>
       ) : (
-        <div className='bg-white w-fit h-fit rounded-lg mx-auto shadow-lg'>
+        <div
+          className='bg-white w-fit h-fit rounded-lg mx-auto shadow-lg'
+          data-cy='welcome'
+        >
           <div className='p-8 mt-44'>
-            <p className='underline italic mb-6' data-cy='welcome'>Welcome to my demo app for Cypress!</p>
-      
+            <p className='underline italic mb-6'>
+              Welcome to my demo app for Cypress!
+            </p>
+
             <p>username: felix@felix.com</p>
             <p>password: 1234</p>
           </div>

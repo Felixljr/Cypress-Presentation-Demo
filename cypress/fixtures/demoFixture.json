@@ -1,7 +1,7 @@
 {
   "name": "Felix",
-  "email": "cypress@cypress.io",
-  "password": "password123",
+  "email": "felix@felix.com",
+  "password": "1234",
   "invalid_password": "password",
   "body": "Fixtures are a great way to mock data for responses to routes"
 }

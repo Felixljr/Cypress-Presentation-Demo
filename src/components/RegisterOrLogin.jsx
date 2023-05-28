@@ -23,7 +23,7 @@ export default function RegisterOrLogin({ modal }) {
      setValidOrInvalid('valid')
      handleShowNotification()
      document.cookie = 'cookieForFelix=thanks; max-age=60*60*24*30; path=/'
-     setInterval(() => (window.location.href = '/account'), 1000)
+     setInterval(() => (window.location.href = '/account'), 10000)
      console.log('success')
    } else {
      setValidOrInvalid('invalid')
@@ -108,6 +108,7 @@ export default function RegisterOrLogin({ modal }) {
                     <button
                       type='submit'
                       className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
+                      data-cy='RegisterButton'
                     >
                       Register
                     </button>
@@ -115,7 +116,11 @@ export default function RegisterOrLogin({ modal }) {
                 </form>
                 <div className='flex flex-row justify-center mt-4'>
                   <p>Already have an account? </p> &nbsp;
-                  <button type='submit' onClick={() => setSignIn(false)}>
+                  <button
+                    type='submit'
+                    onClick={() => setSignIn(false)}
+                    data-cy='SignIn'
+                  >
                     Sign In
                   </button>
                 </div>
@@ -156,6 +161,7 @@ export default function RegisterOrLogin({ modal }) {
                         required
                         ref={emailRef}
                         className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6'
+                        data-cy='email'
                       />
                     </div>
                   </div>
@@ -176,6 +182,7 @@ export default function RegisterOrLogin({ modal }) {
                         required
                         ref={passwordRef}
                         className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6'
+                        data-cy='password'
                       />
                     </div>
                   </div>
@@ -185,6 +192,7 @@ export default function RegisterOrLogin({ modal }) {
                       type='submit'
                       className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
                       onClick={handleSignIn}
+                      data-cy='SignInButton'
                     >
                       Sign In
                     </button>
@@ -193,7 +201,11 @@ export default function RegisterOrLogin({ modal }) {
 
                 <div className='flex flex-row justify-center mt-4'>
                   <p>Don't have an account? </p> &nbsp;
-                  <button type='submit' onClick={() => setSignIn(true)}>
+                  <button
+                    type='submit'
+                    onClick={() => setSignIn(true)}
+                    data-cy='Register'
+                  >
                     Register
                   </button>
                 </div>

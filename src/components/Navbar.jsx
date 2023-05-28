@@ -28,6 +28,7 @@ export default function Navbar({ modal, signedIn, signOut }) {
               <button
                 className='bg-black text-white rounded-md p-2 mr-2'
                 onClick={modal}
+                data-cy='SignIn/Reg'
               >
                 Sign In / Register
               </button>
