@@ -8,7 +8,7 @@ export default function AccountPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar signedIn={true} />
      
     </>
   )
