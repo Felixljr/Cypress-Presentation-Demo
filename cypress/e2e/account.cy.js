@@ -29,4 +29,11 @@ describe('Account Page', () => {
     // Check that the selection appears in the adjacent div
     cy.get('[data-cy="Selection"]').contains('License')
   })
+
+  //Attributes
+  it('Should have one active and one diabled button', () => {
+    // Click on the Dropdown button to open the menu
+    cy.get('[data-cy="active"]').should('be.enabled') //assert that the button is enabled 
+    cy.get('[data-cy="notActive"]').should('be.disabled') //assert that the button is disabled
+  })
 })
