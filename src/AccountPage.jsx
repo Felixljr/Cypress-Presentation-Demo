@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-
+import Conatiner from './components/GeneralContainer'
 
 export default function AccountPage() {
 
@@ -13,6 +13,11 @@ export default function AccountPage() {
   return (
     <>
       <Navbar signedIn={true} signOut={handleSignOut} />
+      <div className='mt-10'>
+        <Conatiner>
+          <p className='title'>Attributes</p>
+        </Conatiner>
+      </div>
     </>
   )
 }

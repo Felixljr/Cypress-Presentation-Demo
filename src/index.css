@@ -8,3 +8,7 @@ background-image: linear-gradient(to bottom,#9a9da0, #ECEFF4 );
 background-attachment: fixed;
 height: 100%;
 }
+
+.title {
+  @apply text-2xl font-bold text-center text-gray-800 sm:text-3xl;
+}
