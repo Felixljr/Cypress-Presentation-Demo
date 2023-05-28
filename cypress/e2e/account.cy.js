@@ -18,8 +18,9 @@ describe('Account Page', () => {
   })
 
   //Dropdowns
-  it('Should have a dropdown with 3 options', () => {
+  it('Should have a dropdown with options', () => {
     // Click on the Dropdown button to open the menu
+    // find is within the scope of the element selected by get
     cy.get('[data-cy="Dropdown"]').find('button').click()
     // Find all the options in the Dropdown menu; assign them to the alias 'options'
     cy.get('[data-cy="Dropdown"]').find('a').as('options')
@@ -30,10 +31,25 @@ describe('Account Page', () => {
     cy.get('[data-cy="Selection"]').contains('License')
   })
 
+
   //Attributes
-  it('Should have one active and one diabled button', () => {
-    // Click on the Dropdown button to open the menu
-    cy.get('[data-cy="active"]').should('be.enabled') //assert that the button is enabled 
-    cy.get('[data-cy="notActive"]').should('be.disabled') //assert that the button is disabled
-  })
+it('Should have one active and one disabled button', () => {
+  // Assert that the active button is enabled
+  cy.get('[data-cy="active"]').should('be.enabled')
+  // Assert that the notActive button is disabled using 'attr'
+  cy.get('[data-cy="notActive"]').should('have.attr', 'disabled')
+
+  // Extension using Chai assertions
+  // Use DOM traversal/relationships
+  cy.get('[data-cy="active"]')
+    .parent()
+    .should((el) => {
+      // Use Chai to assert that the parent element has the correct class
+      expect(el)
+        .to.have.class('flex')
+        .and.have.class('flex-row')
+        .and.have.class('justify-evenly')
+    })
+})
+
 })
