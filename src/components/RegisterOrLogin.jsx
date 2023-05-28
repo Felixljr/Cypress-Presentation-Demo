@@ -16,7 +16,7 @@ export default function RegisterOrLogin({ modal }) {
       // setAlertColor('alert-success')
       // setAlertMsg('Login Successful')
       // setShowAlert(true)
-      // setInterval(() => (window.location.href = '/account'), 10000)
+      setInterval(() => (window.location.href = '/account'), 1000)
       console.log('success')
     } else {
       // setAlertColor('alert-danger')

@@ -20,7 +20,8 @@
     "json-server": "^0.17.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.9.0"
+    "react-icons": "^4.9.0",
+    "react-router-dom": "^6.11.2"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
