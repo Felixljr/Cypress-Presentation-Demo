@@ -24,16 +24,22 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+
 Cypress.Commands.add('partialLogin', () => {
-    cy.get('[data-cy="SignIn/Reg"]').click()
-    cy.get('[data-cy="Register"]').click()
-    //select by element and ensure the count is accurate
-    cy.get('input').should('have.length', 3)
-    cy.get('[data-cy="SignIn"]').click()
-    // use .type to enter text into the input
-    cy.get('[data-cy="email"]').type('felix@felix.com')
+  cy.get('[data-cy="SignIn/Reg"]').click()
+  cy.get('[data-cy="Register"]').click()
+  //select by element and ensure the count is accurate
+  cy.get('input').should('have.length', 3)
+  cy.get('[data-cy="SignIn"]').click()
+  // use .type to enter text into the input
+  cy.get('[data-cy="email"]').type('felix@felix.com')
 })
 
-Cypress.Commands.add('getById', (selector) => {
-  return cy.get(`[data-cy="${selector}"]`)
+//use addQuery to shorten the syntax for selecting by data-cy
+Cypress.Commands.addQuery('cyId', (selector) => {
+  const getId = cy.now('get', `[data-cy="${selector}"]`)
+  return () => {
+    const identifyer = getId()
+    return identifyer
+  }
 })
