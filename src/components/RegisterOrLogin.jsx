@@ -1,9 +1,30 @@
-import { useState } from 'react'
-import {AiOutlineCloseCircle} from 'react-icons/ai'
+import { useState, useRef } from 'react'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-export default function RegisterOrLogin({ modal}) {
+export default function RegisterOrLogin({ modal }) {
+  const [signIn, setSignIn] = useState(false)
+  const emailRef = useRef()
+  const passwordRef = useRef()
 
-const [signIn, setSignIn] = useState(false)
+  const handleSignIn = async (e) => {
+    e.preventDefault()
+    const email = emailRef.current.value
+    const password = passwordRef.current.value
+    console.log('Sign In')
+    if (email === 'felix@felix.com' && password === '1234') {
+      document.cookie = 'cookieForFelix=thanks; max-age=60*60*24*30; path=/'
+      // setAlertColor('alert-success')
+      // setAlertMsg('Login Successful')
+      // setShowAlert(true)
+      // setInterval(() => (window.location.href = '/account'), 10000)
+      console.log('success')
+    } else {
+      // setAlertColor('alert-danger')
+      // setAlertMsg('Username and/or Password Invalid!')
+      // setShowAlert(true)
+      console.log('error')
+    }
+  }
 
   return (
     <>
@@ -55,7 +76,6 @@ const [signIn, setSignIn] = useState(false)
                         id='password2'
                         name='password2'
                         type='password'
-              
                         required
                         className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6'
                       />
@@ -72,7 +92,6 @@ const [signIn, setSignIn] = useState(false)
                         id='password2'
                         name='password2'
                         type='password'
-            
                         required
                         className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6'
                       />
@@ -129,6 +148,7 @@ const [signIn, setSignIn] = useState(false)
                         type='email'
                         autoComplete='email'
                         required
+                        ref={emailRef}
                         className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6'
                       />
                     </div>
@@ -148,6 +168,7 @@ const [signIn, setSignIn] = useState(false)
                         type='password'
                         autoComplete='current-password'
                         required
+                        ref={passwordRef}
                         className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6'
                       />
                     </div>
@@ -157,6 +178,7 @@ const [signIn, setSignIn] = useState(false)
                     <button
                       type='submit'
                       className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
+                      onClick={handleSignIn}
                     >
                       Sign In
                     </button>
