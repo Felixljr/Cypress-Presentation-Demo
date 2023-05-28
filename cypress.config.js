@@ -1,4 +1,6 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress'
+
+//default config is fine for most use cases****
 
 export default defineConfig({
   e2e: {
