@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('partialLogin', () => {
     cy.get('[data-cy="SignIn/Reg"]').click()
     cy.get('[data-cy="Register"]').click()
     //select by element and ensure the count is accurate

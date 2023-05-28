@@ -12,6 +12,7 @@ export default function Navbar({ modal, signedIn, signOut }) {
               <button
                 className='bg-black text-white rounded-md p-2 mr-2'
                 onClick={signOut}
+                data-cy='SignOut'
               >
                 Sign Out
               </button>
