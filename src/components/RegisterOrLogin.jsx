@@ -82,6 +82,12 @@ const [signIn, setSignIn] = useState(false)
                     </button>
                   </div>
                 </form>
+                <div className='flex flex-row justify-center mt-4'>
+                  <p>Already have an account? </p> &nbsp;
+                  <button type='submit' onClick={() => setSignIn(false)}>
+                    Sign In
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -145,6 +151,13 @@ const [signIn, setSignIn] = useState(false)
                     </button>
                   </div>
                 </form>
+
+                <div className='flex flex-row justify-center mt-4'>
+                  <p>Dont't have an account? </p> &nbsp;
+                  <button type='submit' onClick={() => setSignIn(true)}>
+                    Register
+                  </button>
+                </div>
               </div>
             </div>
           </div>
