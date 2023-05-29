@@ -1,10 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Conatiner from './components/GeneralContainer'
 import Dropdown from './components/Dropdown'
 
 export default function AccountPage() {
   const [retrievedData, setRetrievedData] = useState('')
+    
+  const [location, setLocation] = useState('')
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocation(
+          `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`
+        )
+      })
+    } else {
+      setLocation('Geolocation is not supported by this browser.')
+    }
+  }, [])
 
   const handleSignOut = (e) => {
     e.preventDefault()
@@ -81,6 +95,30 @@ export default function AccountPage() {
                 data-cy='DataDisplay'
               >
                 {retrievedData}
+              </p>
+            </div>
+          </div>
+        </Conatiner>
+
+        <Conatiner>
+          <p className='title'>Stubbing</p>
+          <div className='flex flex-row justify-evenly py-1'>
+            <p>What is your location?</p>
+            <div className='h-fit flex flex-row justify-between w-24'>
+              <button
+                className='bg-purple-500 p-2 rounded-lg text-white'
+                data-cy='GetLocation'
+                onClick={() => setLocation(location)}
+              >
+                Get Location
+              </button>
+            </div>
+            <div className='flex justify-center min-h-[80%] min-w-[30%] bg-slate-200 rounded-lg'>
+              <p
+                className='flex self-center bg-slate-200 rounded-lg p-2'
+                data-cy='LocationDisplay'
+              >
+                {location}
               </p>
             </div>
           </div>

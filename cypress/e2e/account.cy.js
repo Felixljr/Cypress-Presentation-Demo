@@ -81,5 +81,31 @@ describe('Account Page', () => {
    cy.get('[data-cy="DataDisplay"]').should('contain', 'Intercepted data')
  })
 
-
 })
+
+describe('Stubbing Geolocation', () => {
+  beforeEach(() => {
+    cy.visit('/account')
+    cy.window().then((win) => {
+      cy.stub(win.navigator.geolocation, 'getCurrentPosition').callsFake(
+        (callback) => {
+          return callback({
+            coords: {
+              latitude: 11.1111,
+              longitude: -11.1111,
+            },
+          })
+        }
+      )
+    })
+  })
+
+  it('stubs the user location', () => {
+    cy.get("[data-cy='GetLocation']").click()
+    cy.get("[data-cy='LocationDisplay']").should(
+      'have.text',
+      'Latitude: 11.1111, Longitude: -11.1111'
+    )
+  })
+})
+
