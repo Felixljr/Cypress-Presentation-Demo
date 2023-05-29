@@ -61,7 +61,7 @@ describe('Account Page', () => {
    cy.get('[data-cy="GetRealData"]').click()
 
    // Wait for the real data to be displayed
-   cy.get('[data-cy="RealDataDisplay"]').should('contain', 'I made it!')
+   cy.get('[data-cy="DataDisplay"]').should('contain', 'I made it!')
 
    // Intercept the data and use hard-coded data instead
    cy.intercept('GET', 'http://localhost:3000/posts/1/messages', (req) => {
@@ -78,7 +78,7 @@ describe('Account Page', () => {
 
    // Wait for the intercepted data to be displayed
    cy.wait('@interceptedRequest')
-   cy.get('[data-cy="InterceptedData"]').should('contain', 'Intercepted data')
+   cy.get('[data-cy="DataDisplay"]').should('contain', 'Intercepted data')
  })
 
 

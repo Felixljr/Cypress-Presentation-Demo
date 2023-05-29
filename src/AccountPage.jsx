@@ -12,7 +12,7 @@ export default function AccountPage() {
     setInterval(() => (window.location.href = '/'), 1000)
   }
 
-  const handleNonIntercept = async () => {
+  const handleInterceptSection = async () => {
     try {
       const response = await fetch('http://localhost:3000/posts/1/messages')
       const data = await response.json()
@@ -56,40 +56,32 @@ export default function AccountPage() {
 
         <Conatiner>
           <p className='title'>Intercepting</p>
-          <div className='flex flex-row justify-evenly py-4'>
-            <div className='h-28 flex flex-col justify-between'>
+          <div className='flex flex-row justify-evenly py-1'>
+            <div className='h-fit flex flex-col justify-between'>
+              <p>Real Data Button</p>
               <button
                 className='bg-purple-500 p-2 rounded-lg text-white'
                 data-cy='GetRealData'
-                onClick={handleNonIntercept}
+                onClick={handleInterceptSection}
               >
                 Real Data
               </button>
-              <div className='flex justify-center'>
-                <p
-                  className='flex self-center bg-slate-300 rounded-lg p-2'
-                  data-cy='RealDataDisplay'
-                >
-                  {retrievedData}
-                </p>
-              </div>
-            </div>
-            <div className='h-28 flex flex-col justify-between w-38'>
+              <p className='mt-3'>CYPRESS ONLY Button</p>
               <button
                 className='bg-pink-500 p-2 rounded-lg text-white'
                 data-cy='GetInterceptedData'
-                onClick={handleNonIntercept}
+                onClick={handleInterceptSection}
               >
-                Intercepted Data
+                Intercept Data
               </button>
-              <div className='flex justify-center'>
-                <p
-                  className='flex self-center bg-slate-300 rounded-lg p-2'
-                  data-cy='InterceptedData'
-                >
-                  {retrievedData}
-                </p>
-              </div>
+            </div>
+            <div className='flex justify-center min-h-[80%] min-w-[30%] bg-slate-200 rounded-lg'>
+              <p
+                className='flex self-center bg-slate-200 rounded-lg p-2'
+                data-cy='DataDisplay'
+              >
+                {retrievedData}
+              </p>
             </div>
           </div>
         </Conatiner>
