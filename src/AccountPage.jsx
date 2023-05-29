@@ -5,15 +5,14 @@ import Dropdown from './components/Dropdown'
 
 export default function AccountPage() {
   const [retrievedData, setRetrievedData] = useState('')
-    
   const [location, setLocation] = useState('')
+  const [inputValue, setInputValue] = useState('')
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation(
-          `Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}` //commented out for demo purposes
-         //`Lat: 55, Long: 55` //hard-coded for demo purposes
+          `Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}`
         )
       })
     } else {
@@ -36,6 +35,19 @@ export default function AccountPage() {
       setRetrievedData(dataAsString)
     } catch (error) {
       console.error('Error retrieving data:', error)
+    }
+  }
+
+  const handleSaveToClipboard = () => {
+    if (inputValue) {
+      navigator.clipboard
+        .writeText(inputValue)
+        .then(() => {
+          console.log('Text saved to clipboard:', inputValue)
+        })
+        .catch((error) => {
+          console.error('Failed to save text to clipboard:', error)
+        })
     }
   }
 
@@ -121,6 +133,26 @@ export default function AccountPage() {
               >
                 {location}
               </p>
+            </div>
+          </div>
+        </Conatiner>
+        <Conatiner>
+          <p className='title'>Clipboard</p>
+          <div className='flex flex-row justify-evenly py-1'>
+            <div className='h-fit flex flex-col justify-between'>
+              <input
+                type='text'
+                className='border border-gray-300 rounded-md p-2'
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder='Enter text'
+              />
+              <button
+                className='bg-pink-500 p-2 rounded-lg text-white'
+                onClick={handleSaveToClipboard}
+              >
+                Save to Clipboard
+              </button>
             </div>
           </div>
         </Conatiner>

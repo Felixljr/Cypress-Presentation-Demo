@@ -115,5 +115,20 @@ describe('Get User Geolocation', () => {
       'Lat: 11.111, Long: -11.111'
     )
   })
+
+  it('should save text to clipboard when button is clicked', () => {
+    cy.visit('/account') // Assuming the page URL is '/account-page'
+
+    cy.get('input[type="text"]').type('Copy Me') // Type "Copy Me" into the input field
+
+    cy.window().then((win) => {
+      cy.spy(win.navigator.clipboard, 'writeText').as('writeTextSpy') // Spy on the writeText function
+    })
+
+    cy.contains('Save to Clipboard').click() // Click the "Save to Clipboard" button
+
+    cy.get('@writeTextSpy').should('be.calledOnce') // Assert that the writeText function was called once
+  })
+
 })
 
