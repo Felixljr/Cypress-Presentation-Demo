@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
-
+// chalk is only used to make the output easier to spot in the console
+import chalk from 'chalk'
 //default config is fine for most use cases****
 
 export default defineConfig({
@@ -11,7 +12,8 @@ export default defineConfig({
       // implement node event listeners here
       on('task', {
         hello({ greeting, name }) {
-          console.log(`${greeting}, how are you ${name}?`)
+          // chalk is only used to make the output easier to spot in the console
+          console.log(chalk.magenta(`${greeting}, how are you ${name}`))
           return null
         },
       })
