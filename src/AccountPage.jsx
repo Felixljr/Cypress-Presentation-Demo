@@ -13,6 +13,7 @@ export default function AccountPage() {
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation(
           `Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}`
+          // `Lat: 99, Long: 88`
         )
       })
     } else {

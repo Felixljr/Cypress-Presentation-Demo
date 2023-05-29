@@ -125,7 +125,7 @@ describe('Get check that the clipboard was called once', () => {
 
   it('should save text to clipboard when button is clicked', () => {
     cy.visit('/account')
-    //selecting base on type is okay here because there is only one input on the page
+    //selecting based on type is okay here because there is only one input on the page
     cy.get('input[type="text"]').type('Copy Me') // Type "Copy Me" into the input field
 
     cy.window().then((win) => {
