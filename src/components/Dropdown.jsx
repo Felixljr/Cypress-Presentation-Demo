@@ -86,7 +86,7 @@ export default function Dropdown() {
       </Menu>
       <div className='flex justify-center' data-cy='Selection'>
         {selected === '' ? (
-          <p className='flex self-centerp-1'>{selected}</p>
+          <p className='flex self-center p-1'>{selected}</p>
         ) : (
           <p className='flex self-center bg-slate-300 rounded-lg p-2'>{selected}</p>
         )}

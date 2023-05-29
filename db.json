@@ -1,5 +1,6 @@
 {
   "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "email": "felix@felix.com", "password": "1234" }
+  "profile": { "email": "felix@felix.com", "password": "1234" },
+  "messages": { "success": "I made it!" }
 }

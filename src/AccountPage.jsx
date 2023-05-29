@@ -4,10 +4,24 @@ import Conatiner from './components/GeneralContainer'
 import Dropdown from './components/Dropdown'
 
 export default function AccountPage() {
+  const [retrievedData, setRetrievedData] = useState('')
+
   const handleSignOut = (e) => {
     e.preventDefault()
     document.cookie = 'cookieForFelix=; max-age=0; path=/'
     setInterval(() => (window.location.href = '/'), 1000)
+  }
+
+  const handleNonIntercept = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/posts/1/messages')
+      const data = await response.json()
+      const dataAsString = JSON.stringify(data.success)
+
+      setRetrievedData(dataAsString)
+    } catch (error) {
+      console.error('Error retrieving data:', error)
+    }
   }
 
   return (
@@ -41,8 +55,36 @@ export default function AccountPage() {
         </Conatiner>
 
         <Conatiner>
-          <p className='title'>Attributes</p>
-          
+          <p className='title'>Intercepting</p>
+          <div className='flex flex-row justify-evenly py-4'>
+            <div className='h-28 flex flex-col justify-between'>
+              <button
+                className='bg-purple-500 p-2 rounded-lg text-white'
+                data-cy='active'
+                onClick={handleNonIntercept}
+              >
+                Real Data
+              </button>
+              <div className='flex justify-center' data-cy='Selection'>
+                <p className='flex self-center bg-slate-300 rounded-lg p-2'>
+                  {retrievedData}
+                </p>
+              </div>
+            </div>
+            <div className='h-28 flex flex-col justify-between w-38'>
+              <button
+                className='bg-pink-500 p-2 rounded-lg text-white'
+                data-cy='active'
+              >
+                Intercepted Data
+              </button>
+              <div className='flex justify-center' data-cy='Selection'>
+                <p className='flex self-center bg-slate-300 rounded-lg p-2'>
+                  {'selected'}
+                </p>
+              </div>
+            </div>
+          </div>
         </Conatiner>
       </div>
     </>
