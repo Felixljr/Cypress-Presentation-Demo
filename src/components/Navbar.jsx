@@ -10,7 +10,7 @@ export default function Navbar({ modal, signedIn, signOut }) {
 
             <div className='flex flex-row w-44 justify-end'>
               <button
-                className='bg-black text-white rounded-md p-2 mr-2'
+                className='bg-black text-white rounded-md p-2 mr-2 hover:bg-purple-500'
                 onClick={signOut}
                 data-cy='SignOut'
               >
@@ -27,7 +27,7 @@ export default function Navbar({ modal, signedIn, signOut }) {
             </h1>
             <div className='flex flex-row w-44 justify-end'>
               <button
-                className='bg-black text-white rounded-md p-2 mr-2'
+                className='bg-black text-white rounded-md p-2 mr-2 hover:bg-purple-500'
                 onClick={modal}
                 data-cy='SignIn/Reg'
               >

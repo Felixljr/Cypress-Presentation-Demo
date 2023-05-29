@@ -142,7 +142,7 @@ export default function AccountPage() {
             <div className='h-fit flex flex-col justify-between'>
               <input
                 type='text'
-                className='border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-pink-500'
+                className='border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 hover:border-pink-500'
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder='Enter text to be copied'

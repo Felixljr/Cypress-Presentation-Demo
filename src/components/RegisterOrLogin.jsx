@@ -23,7 +23,7 @@ export default function RegisterOrLogin({ modal }) {
      setValidOrInvalid('valid')
      handleShowNotification()
      document.cookie = 'cookieForFelix=thanks; max-age=60*60*24*30; path=/'
-     setInterval(() => (window.location.href = '/account'), 10000)
+     setInterval(() => (window.location.href = '/account'), 5000)
      console.log('success')
    } else {
      setValidOrInvalid('invalid')
@@ -45,7 +45,7 @@ export default function RegisterOrLogin({ modal }) {
 
             <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
               <div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
-                <div className='relative left-[96%] bottom-8 md:left-[99%] hover:text-red-800'>
+                <div className='relative left-[96%] bottom-8 md:left-[99%] hover:text-pink-400'>
                   <button onClick={modal}>
                     <AiOutlineCloseCircle size={25} />
                   </button>
@@ -107,7 +107,7 @@ export default function RegisterOrLogin({ modal }) {
                   <div>
                     <button
                       type='submit'
-                      className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
+                      className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bg-pink-500'
                       data-cy='RegisterButton'
                     >
                       Register
@@ -139,7 +139,7 @@ export default function RegisterOrLogin({ modal }) {
 
             <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]'>
               <div className='bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12'>
-                <div className='relative left-[96%] bottom-8 md:left-[99%] hover:text-red-800'>
+                <div className='relative left-[96%] bottom-8 md:left-[99%] hover:text-pink-400'>
                   <button onClick={modal}>
                     <AiOutlineCloseCircle size={25} />
                   </button>
@@ -190,7 +190,7 @@ export default function RegisterOrLogin({ modal }) {
                   <div>
                     <button
                       type='submit'
-                      className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
+                      className='flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
                       onClick={handleSignIn}
                       data-cy='SignInButton'
                     >
