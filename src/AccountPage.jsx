@@ -60,13 +60,16 @@ export default function AccountPage() {
             <div className='h-28 flex flex-col justify-between'>
               <button
                 className='bg-purple-500 p-2 rounded-lg text-white'
-                data-cy='active'
+                data-cy='GetRealData'
                 onClick={handleNonIntercept}
               >
                 Real Data
               </button>
-              <div className='flex justify-center' data-cy='Selection'>
-                <p className='flex self-center bg-slate-300 rounded-lg p-2'>
+              <div className='flex justify-center'>
+                <p
+                  className='flex self-center bg-slate-300 rounded-lg p-2'
+                  data-cy='RealDataDisplay'
+                >
                   {retrievedData}
                 </p>
               </div>
@@ -74,13 +77,17 @@ export default function AccountPage() {
             <div className='h-28 flex flex-col justify-between w-38'>
               <button
                 className='bg-pink-500 p-2 rounded-lg text-white'
-                data-cy='active'
+                data-cy='GetInterceptedData'
+                onClick={handleNonIntercept}
               >
                 Intercepted Data
               </button>
-              <div className='flex justify-center' data-cy='Selection'>
-                <p className='flex self-center bg-slate-300 rounded-lg p-2'>
-                  {'selected'}
+              <div className='flex justify-center'>
+                <p
+                  className='flex self-center bg-slate-300 rounded-lg p-2'
+                  data-cy='InterceptedData'
+                >
+                  {retrievedData}
                 </p>
               </div>
             </div>

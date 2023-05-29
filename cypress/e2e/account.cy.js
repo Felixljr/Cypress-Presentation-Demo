@@ -31,28 +31,55 @@ describe('Account Page', () => {
     cy.get('[data-cy="Selection"]').contains('License')
   })
 
-
   //Attributes
-it('Should have one active and one disabled button', () => {
-  // Assert that the active button is enabled
+  it('Should have one active and one disabled button', () => {
+    // Assert that the active button is enabled
 
-  // Use a custom Query (addQuery) to select by cyID; see cypress/support/commands.js
-  cy.cyId('active').should('be.enabled')
+    // Use a custom Query (addQuery) to select by cyID; see cypress/support/commands.js
+    cy.cyId('active').should('be.enabled')
 
-  // Assert that the notActive button is disabled using 'attr' for the attribute
-  cy.get('[data-cy="notActive"]').should('have.attr', 'disabled')
+    // Assert that the notActive button is disabled using 'attr' for the attribute
+    cy.get('[data-cy="notActive"]').should('have.attr', 'disabled')
 
-  // Extension using Chai assertions
-  // Use DOM traversal/relationships
-  cy.cyId('active')
-    .parent()
-    .should((el) => {
-      // Use Chai to assert that the parent element has the correct class
-      expect(el)
-        .to.have.class('flex')
-        .and.have.class('flex-row')
-        .and.have.class('justify-evenly')
-    })
-})
+    // Extension using Chai assertions
+    // Use DOM traversal/relationships
+    cy.cyId('active')
+      .parent()
+      .should((el) => {
+        // Use Chai to assert that the parent element has the correct class
+        expect(el)
+          .to.have.class('flex')
+          .and.have.class('flex-row')
+          .and.have.class('justify-evenly')
+      })
+  })
+
+  //Intercepting  
+
+ it('Should be able to retrieve data from the database and intercept it', () => {
+   // Click the button to retrieve real data
+   cy.get('[data-cy="GetRealData"]').click()
+
+   // Wait for the real data to be displayed
+   cy.get('[data-cy="RealDataDisplay"]').should('contain', 'I made it!')
+
+   // Intercept the data and use hard-coded data instead
+   cy.intercept('GET', 'http://localhost:3000/posts/1/messages', (req) => {
+     req.reply({
+       statusCode: 200,
+       body: {
+         success: 'Intercepted data',
+       },
+     })
+   }).as('interceptedRequest')
+
+   // Click the button to retrieve intercepted data
+   cy.get('[data-cy="GetInterceptedData"]').click()
+
+   // Wait for the intercepted data to be displayed
+   cy.wait('@interceptedRequest')
+   cy.get('[data-cy="InterceptedData"]').should('contain', 'Intercepted data')
+ })
+
 
 })
