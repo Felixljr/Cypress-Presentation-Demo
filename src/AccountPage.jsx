@@ -23,7 +23,7 @@ export default function AccountPage() {
   const handleSignOut = (e) => {
     e.preventDefault()
     document.cookie = 'cookieForFelix=; max-age=0; path=/'
-    setInterval(() => (window.location.href = '/'), 1000)
+    setInterval(() => (window.location.href = '/'), 100)
   }
 
   const handleInterceptSection = async () => {
@@ -137,18 +137,18 @@ export default function AccountPage() {
           </div>
         </Conatiner>
         <Conatiner>
-          <p className='title'>Clipboard</p>
+          <p className='title'>Spying</p>
           <div className='flex flex-row justify-evenly py-1'>
             <div className='h-fit flex flex-col justify-between'>
               <input
                 type='text'
-                className='border border-gray-300 rounded-md p-2'
+                className='border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-pink-500'
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder='Enter text'
+                placeholder='Enter text to be copied'
               />
               <button
-                className='bg-pink-500 p-2 rounded-lg text-white'
+                className='bg-pink-500 p-2 rounded-lg text-white mt-2 '
                 onClick={handleSaveToClipboard}
               >
                 Save to Clipboard
