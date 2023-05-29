@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
+//This custom command can be reused in multiple tests
 Cypress.Commands.add('partialLogin', () => {
   cy.get('[data-cy="SignIn/Reg"]').click()
   cy.get('[data-cy="Register"]').click()

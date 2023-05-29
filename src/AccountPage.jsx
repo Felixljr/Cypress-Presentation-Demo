@@ -39,6 +39,11 @@ export default function AccountPage() {
             </button>
           </div>
         </Conatiner>
+
+        <Conatiner>
+          <p className='title'>Attributes</p>
+          
+        </Conatiner>
       </div>
     </>
   )

@@ -18,7 +18,7 @@ describe('Account Page', () => {
   })
 
   //Dropdowns
-  it('Should have a dropdown with options', () => {
+  it('Should have a dropdown with options, select the 3rd to display', () => {
     // Click on the Dropdown button to open the menu
     // find is within the scope of the element selected by get
     cy.get('[data-cy="Dropdown"]').find('button').click()
@@ -36,10 +36,10 @@ describe('Account Page', () => {
 it('Should have one active and one disabled button', () => {
   // Assert that the active button is enabled
 
-  // Use a custom command to select by data-cy; see cypress/support/commands.js
+  // Use a custom Query (addQuery) to select by cyID; see cypress/support/commands.js
   cy.cyId('active').should('be.enabled')
 
-  // Assert that the notActive button is disabled using 'attr'
+  // Assert that the notActive button is disabled using 'attr' for the attribute
   cy.get('[data-cy="notActive"]').should('have.attr', 'disabled')
 
   // Extension using Chai assertions
