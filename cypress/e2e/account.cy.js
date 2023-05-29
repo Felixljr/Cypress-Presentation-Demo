@@ -85,6 +85,10 @@ describe('Account Page', () => {
 
 describe('Get User Geolocation', () => {
   beforeEach(() => {
+    // see cypress.config.js for the task
+    // this would be used to run functions on the server; if needed
+    cy.task('hello', { greeting: 'Hey', name: 'Felix' })
+
     cy.visit('/account')
     //Get the window object and use .then to access the window object
     cy.window().then((win) => {

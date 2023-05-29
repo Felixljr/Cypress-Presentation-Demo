@@ -9,6 +9,12 @@ export default defineConfig({
     screenshotOnRunFailure: true, //take a screenshot on test failure
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      on('task', {
+        hello({ greeting, name }) {
+          console.log(`${greeting}, how are you ${name}?`)
+          return null
+        },
+      })
     },
   },
 })

@@ -12,8 +12,8 @@ export default function AccountPage() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation(
-          //`Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}` //commented out for demo purposes
-         `Lat: 55, Long: 55` //hard-coded for demo purposes
+          `Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}` //commented out for demo purposes
+         //`Lat: 55, Long: 55` //hard-coded for demo purposes
         )
       })
     } else {
