@@ -12,7 +12,8 @@ export default function AccountPage() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation(
-          `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`
+          //`Lat: ${position.coords.latitude}, Long: ${position.coords.longitude}` //commented out for demo purposes
+         `Lat: 55, Long: 55` //hard-coded for demo purposes
         )
       })
     } else {
@@ -113,7 +114,7 @@ export default function AccountPage() {
                 Get Location
               </button>
             </div>
-            <div className='flex justify-center min-h-[80%] min-w-[30%] bg-slate-200 rounded-lg'>
+            <div className='flex justify-center min-h-[80%] min-w-[50%] bg-slate-200 rounded-lg ml-5'>
               <p
                 className='flex self-center bg-slate-200 rounded-lg p-2'
                 data-cy='LocationDisplay'

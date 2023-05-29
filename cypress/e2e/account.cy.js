@@ -83,16 +83,20 @@ describe('Account Page', () => {
 
 })
 
-describe('Stubbing Geolocation', () => {
+describe('Get User Geolocation', () => {
   beforeEach(() => {
     cy.visit('/account')
+    //Get the window object and use .then to access the window object
     cy.window().then((win) => {
+      //within the window object access navigator.geolocation and the function getCurrentPosition on it
       cy.stub(win.navigator.geolocation, 'getCurrentPosition').callsFake(
+        //callsFake is a function that takes a callback; this callback is the a fake function that will be called instead of the getCurrentPosition
         (callback) => {
+          //hard code the latitude and longitude or any information you want to return
           return callback({
             coords: {
-              latitude: 11.1111,
-              longitude: -11.1111,
+              latitude: 11.111,
+              longitude: -11.111,
             },
           })
         }
@@ -104,7 +108,7 @@ describe('Stubbing Geolocation', () => {
     cy.get("[data-cy='GetLocation']").click()
     cy.get("[data-cy='LocationDisplay']").should(
       'have.text',
-      'Latitude: 11.1111, Longitude: -11.1111'
+      'Lat: 11.111, Long: -11.111'
     )
   })
 })
