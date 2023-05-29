@@ -17,6 +17,8 @@ describe('Account Page', () => {
     cy.get('[data-cy="SignOut"]').contains('Sign Out')
   })
 
+  //The next 3 test could be a part of their own test suite, but they are left here to demonstrate the use of beforeEach
+
   //Dropdowns
   it('Should have a dropdown with options, select the 3rd to display', () => {
     // Click on the Dropdown button to open the menu
@@ -83,6 +85,7 @@ describe('Account Page', () => {
 
 })
 
+
 describe('Get User Geolocation', () => {
   beforeEach(() => {
     // see cypress.config.js for the task
@@ -116,19 +119,22 @@ describe('Get User Geolocation', () => {
     )
   })
 
-  it('should save text to clipboard when button is clicked', () => {
-    cy.visit('/account') // Assuming the page URL is '/account-page'
+})
 
+describe('Get check that the clipboard was called once', () => {
+
+  it('should save text to clipboard when button is clicked', () => {
+    cy.visit('/account')
+    //selecting base on type is okay here because there is only one input on the page
     cy.get('input[type="text"]').type('Copy Me') // Type "Copy Me" into the input field
 
     cy.window().then((win) => {
       cy.spy(win.navigator.clipboard, 'writeText').as('writeTextSpy') // Spy on the writeText function
     })
-
+    //Another way to get an element
     cy.contains('Save to Clipboard').click() // Click the "Save to Clipboard" button
 
     cy.get('@writeTextSpy').should('be.calledOnce') // Assert that the writeText function was called once
   })
 
 })
-
