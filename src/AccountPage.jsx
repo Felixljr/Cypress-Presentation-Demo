@@ -86,21 +86,13 @@ export default function AccountPage() {
           <p className='title'>Intercepting</p>
           <div className='flex flex-row justify-evenly py-1'>
             <div className='h-fit flex flex-col justify-between'>
-              <p>Real Data Button</p>
+              <p>Data Button</p>
               <button
                 className='bg-purple-500 p-2 rounded-lg text-white'
                 data-cy='GetRealData'
                 onClick={handleInterceptSection}
               >
-                Real Data
-              </button>
-              <p className='mt-3'>CYPRESS ONLY Button</p>
-              <button
-                className='bg-pink-500 p-2 rounded-lg text-white'
-                data-cy='GetInterceptedData'
-                onClick={handleInterceptSection}
-              >
-                Intercept Data
+                Get Data
               </button>
             </div>
             <div className='flex justify-center min-h-[80%] min-w-[30%] bg-slate-200 rounded-lg'>

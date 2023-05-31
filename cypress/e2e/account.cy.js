@@ -76,7 +76,7 @@ describe('Account Page', () => {
    }).as('interceptedRequest')
 
    // Click the button to retrieve intercepted data
-   cy.get('[data-cy="GetInterceptedData"]').click()
+   cy.get('[data-cy="GetRealData"]').click()
 
    // Wait for the intercepted data to be displayed
    cy.wait('@interceptedRequest')

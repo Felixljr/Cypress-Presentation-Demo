@@ -62,7 +62,7 @@ describe('Home Page', () => {
         .should('exist')
         .should('have.property', 'value', 'thanks')
       //Use cy.tick() to advance time; see https://docs.cypress.io/api/commands/tick
-      cy.tick(10000)
+      cy.tick(2000)
       // cy.url().should('include', '/account')
       cy.location('pathname').should('eq', '/account')
     })

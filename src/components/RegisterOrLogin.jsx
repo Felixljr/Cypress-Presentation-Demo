@@ -23,7 +23,7 @@ export default function RegisterOrLogin({ modal }) {
      setValidOrInvalid('valid')
      handleShowNotification()
      document.cookie = 'cookieForFelix=thanks; max-age=60*60*24*30; path=/'
-     setInterval(() => (window.location.href = '/account'), 5000)
+     setInterval(() => (window.location.href = '/account'), 2000)
      console.log('success')
    } else {
      setValidOrInvalid('invalid')
