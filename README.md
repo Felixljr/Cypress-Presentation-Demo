@@ -9,7 +9,7 @@ Note: Since this poject has no server/database, json-server is used to mock a ty
 
 3. You can also ue the `npx cypress run` command to run the tests in headless mode.
 
-Note that there are 2 test files for home: 
-  - `homeForDemo.cy.js` is the test file that was used for the demo. It is not organized in a way that I would recommend for a real project. It also has a lot of comments to explain what is happening.
+**Note that there are 2 test files for home and account: 
+  - `homeForDemo.cy.js` and `accountForDemo.cy.js` are files used for the demo. They are not organized in a way that I would recommend for a real project. They also have a lot of comments to explain what is happening.
 
-  - `homeOrganized.cy.js` is the same test file but organized in a way that I would recommend for a real project.
+  - `homeOrganized.cy.js` and `accountOrganized.cy.js` are the same test files but organized in a way that I would recommend for a real project.
