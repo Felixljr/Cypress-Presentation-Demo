@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
-
-
 // add the line above to get intellisense for cypress commands
+
+//To see a more realistic example of how you might organize your tests, see homeOrganized.cy.js
+//This test suite was created for demonstration purposes, so it organization is not optimal
 
 describe('Home Page', () => {
   it('Should have a title and button in the navbar', () => {
