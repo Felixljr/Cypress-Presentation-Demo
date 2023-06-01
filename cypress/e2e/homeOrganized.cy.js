@@ -7,7 +7,7 @@ describe('Home Page', () => {
     cy.visit('http://127.0.0.1:5173/')
   })
 
-  describe('Navbar features: title and sign in button', () => {
+  describe('Navbar elements', () => {
     it('Should have a title and button in the navbar', () => {
       cy.get('.shadow').contains("Felix' Cypress Demo")
       cy.get('.bg-black').contains('Sign In /')
@@ -18,35 +18,31 @@ describe('Home Page', () => {
     })
   })
 
-  describe('SignIn/Registration Modal Tests', () => {
-    beforeEach(() => {
-      cy.get('[data-cy="SignIn/Reg"]').click()
-    })
-
+  describe('SignIn/Registration Modal', () => {
     it('Modal should switch between Sign in and Registration', () => {
+      cy.get('[data-cy="SignIn/Reg"]').click()
       cy.get('[data-cy="Register"]').click()
       cy.get('input').should('have.length', 3)
       cy.get('[data-cy="SignIn"]').click()
     })
 
-    it('Test invalid Sign In', () => {
-      cy.get('[data-cy="email"]').type('felix@felix.com')
-
-      cy.fixture('demoFixture').then((userData) => {
-        cy.get('[data-cy="password"]').type(userData.invalid_password)
-        cy.get('[data-cy="SignInButton"]').click()
-        cy.get('[data-cy="Notification"]').contains('Invalid Credentials')
-      })
-    })
   })
 
-  describe('Login Functionality Tests', () => {
+  describe('Login Functionality', () => {
     beforeEach(() => {
       cy.clock()
       cy.partialLogin()
     })
 
-    it('Should be able to log in successfully', () => {
+     it('Should get notifaction with invalid credentials', () => {
+       cy.fixture('demoFixture').then((userData) => {
+         cy.get('[data-cy="password"]').type(userData.invalid_password)
+         cy.get('[data-cy="SignInButton"]').click()
+         cy.get('[data-cy="Notification"]').contains('Invalid Credentials')
+       })
+     })
+
+    it('Should be able to log in successfully and be redirected to account page', () => {
       cy.fixture('demoFixture').then((userData) => {
         cy.get('[data-cy="password"]').type(userData.password)
         cy.get('[data-cy="SignInButton"]').click()

@@ -13,4 +13,4 @@ Note: Since this poject has no true server/database, json-server is used to mock
 **Note that there are 2 test files for home and account: 
   - `homeForDemo.cy.js` and `accountForDemo.cy.js` are files used for the demo. They are not organized in a way that I would recommend for a real project. They also have a lot of comments to explain what is happening.
 
-  - `homeOrganized.cy.js` and `accountOrganized.cy.js` are the same test files as above but organized in a way that is more realistic but still not ideal; for more information visit: https://www.testim.io/blog/test-suite/
+  - `homeOrganized.cy.js` and `accountOrganized.cy.js` are the same test files as above but organized in a way that I would recommend for a real project.

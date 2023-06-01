@@ -6,22 +6,22 @@
 
 describe('Account Page', () => {
 
-  describe('User Authentication Status Change', () => {
+  describe('All cards on the account page should be functional', () => {
     beforeEach(() => {
       cy.visit('/account')
     })
 
-    it('SignIn/Reg button should have changed to Sign Out', () => {
+    it('SignIn/Reg button should change to Sign Out', () => {
       cy.get('[data-cy="SignOut"]').contains('Sign Out')
     })
   })
 
-  describe('Dropdowns', () => {
+  describe('Dropdown', () => {
     beforeEach(() => {
       cy.visit('/account')
     })
 
-    it('Should have a dropdown with options, select the 3rd to display', () => {
+    it('Should have a dropdown 3 options, select the last one, should say License', () => {
       cy.get('[data-cy="Dropdown"]').find('button').click()
       cy.get('[data-cy="Dropdown"]').find('a').as('options')
       cy.get('@options').last().click()
@@ -88,7 +88,7 @@ describe('Account Page', () => {
       })
     })
 
-    it('stubs the user location', () => {
+    it('User location should be stubbed with hard coded values', () => {
       cy.get("[data-cy='GetLocation']").click()
       cy.get("[data-cy='LocationDisplay']").should(
         'have.text',
@@ -97,12 +97,12 @@ describe('Account Page', () => {
     })
   })
 
-  describe('Clipboard Functionality is called once', () => {
+  describe('Clipboard Functionality', () => {
     beforeEach(() => {
       cy.visit('/account')
     })
 
-    it('should save text to clipboard when button is clicked', () => {
+    it('should only be called once when clipbaord button is clicked', () => {
       cy.get('input[type="text"]').type('Copy Me')
       cy.window().then((win) => {
         cy.spy(win.navigator.clipboard, 'writeText').as('writeTextSpy')
