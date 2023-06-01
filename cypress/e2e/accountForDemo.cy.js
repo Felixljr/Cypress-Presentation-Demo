@@ -56,6 +56,8 @@ describe('Account Page', () => {
       })
   })
 
+  ///Advanced Cypress Topics Below:
+
   //Intercepting  
 
  it('Should be able to retrieve data from the database and intercept it', () => {
@@ -85,6 +87,7 @@ describe('Account Page', () => {
 
 })
 
+//Stubbing
 
 describe('Get User Geolocation', () => {
   beforeEach(() => {
@@ -120,6 +123,8 @@ describe('Get User Geolocation', () => {
   })
 
 })
+
+//Spies
 
 describe('Get check that the clipboard was called once', () => {
 
