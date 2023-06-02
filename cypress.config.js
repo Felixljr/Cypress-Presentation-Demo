@@ -8,7 +8,7 @@ export default defineConfig({
     baseUrl: 'http://127.0.0.1:5173/', //use this as the base url for all tests
     video: true, //record video of tests
     screenshotOnRunFailure: true, //take a screenshot on test failure
-    // defaultCommandTimeout: 10000, //default is 4 seconds can also be used loaclly with ({timout: 10000})
+    // defaultCommandTimeout: 10000, //default is 4 seconds can also be used locally with ({timout: 10000})
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on('task', {
